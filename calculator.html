@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            margin: 0px;
+            border: 2px solid red;
+            height: 712px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 350px;
+            border: 1px solid black;
+        }
+        .container0{
+            border:1px solid black;
+            width: 299px;
+            height: 100px;
+            font-size: 23px;
+            
+        }
+        .container1{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            border: 1px solid black;
+            
+            width: 299px;
+            height: 250px;
+        }
+        
+        .btn{
+            font-size: 18px;
+            outline: none;
+            border: none;
+            background-color:#f0ffff;
+        }
+        #plus{
+            font-size: 20px;
+            
+        }
+        #minus{
+            font-size: 25px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="container0" id="container0">
+            
+        </div>
+        <div class="container1">
+            <button class="btn" id="C"  onclick="clearall()">C</button>
+            <button class="btn" id="percent" onclick="fun('%')">%</button>
+            <button class="btn" id="del" onclick="deleteonecharacter()">del</button>
+            <button class="btn" id="divide" onclick="fun('/')">/</button>
+            <button class="btn" id="seven" onclick="fun('7')">7</button>
+            <button class="btn" id="eight" onclick="fun('8')">8</button>
+            <button class="btn" id="nine" onclick="fun('9')">9</button>
+            <button class="btn" id="multiplication" onclick="fun('*')">x</button>
+            <button class="btn" id="four" onclick="fun('4')">4</button>
+            <button class="btn" id="five" onclick="fun('5')">5</button>
+            <button class="btn" id="six" onclick="fun('6')">6</button>
+            <button class="btn" id="minus" onclick="fun('-')">-</button>
+            <button class="btn" id="one" onclick="fun('1')">1</button>
+            <button class="btn" id="two" onclick="fun('2')">2</button>
+            <button class="btn" id="three" onclick="fun('3')">3</button>
+            <button class="btn" id="plus" onclick="fun('+')">+</button>
+            <button class="btn" id="zerozero" onclick="fun('00')">00</button>
+            <button class="btn" id="zero" onclick="fun('0')">0</button>
+            <button class="btn" id="dot" onclick="fun('.')">.</button>
+            <button class="btn" id="equalto" onclick="evaluatestring()">=</button>
+        </div>
+    </div>
+    <script>
+        let container0=document.getElementById('container0');
+        let evalstr='';
+
+        function fun(char){
+            evalstr=evalstr+char;
+            container0.innerHTML=evalstr;
+        }
+
+        function evaluatestring(){
+           let result=eval(evalstr);
+           evalstr='';
+           container0.innerHTML=result;
+        }
+        function clearall(){
+            evalstr='';
+            container0.innerHTML=evalstr;
+        }
+        function deleteonecharacter(){
+            evalstr=evalstr.substring(0,(evalstr.length-1));
+            container0.innerHTML=evalstr;
+        }
+    </script>
+</body>
+</html>
